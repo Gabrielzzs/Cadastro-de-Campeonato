@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <h:outputStylesheet library="css" name="style.css" />
+    <title>Listagem de Jogos</title>
+</h:head>
+<h:body>
+    <h:form id="formulario">
+        <p:panel header="Lista de Jogos">
+            <p:messages id="messages" showDetail="true" closable="true">
+	            <p:autoUpdate/>
+	        </p:messages>
+            <p:dataTable value="#{jogoBean.listaJogos}" var="jogo" rows="10"
+                         paginator="true" editable="true" editMode="row">
+
+                <p:ajax event="rowEdit" listener="#{jogoBean.onRowEdit}" update=":formulario:messages" />
+                <p:ajax event="rowEditCancel" listener="#{jogoBean.onRowCancel}" update=":formulario:messages" />
+
+                <p:column headerText="Data da Partida">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{jogo.dataPartida}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+                            </h:outputText>
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:calendar value="#{jogo.dataPartida}" pattern="dd/MM/yyyy HH:mm" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Time 1">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{jogo.time1}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{jogo.time1}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Gols Time 1">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{jogo.golsTime1}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{jogo.golsTime1}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Time 2">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{jogo.time2}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{jogo.time2}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Gols Time 2">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{jogo.golsTime2}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{jogo.golsTime2}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Campeonato">
+                    <h:outputText value="#{jogo.campeonato.nome}" />
+                </p:column>
+
+                <p:column headerText="Editar">
+                    <p:rowEditor />
+                </p:column>
+
+                <p:column headerText="Excluir">
+                    <p:commandButton value="Excluir" action="#{jogoBean.excluir(jogo)}" update="@form" />
+                </p:column>
+            </p:dataTable>
+
+            <p:linkButton value="Cadastrar Jogo" outcome="cadastro_jogo.xhtml" />
+            <p></p>
+            <p:linkButton value="MENU" outcome="opcoes" />
+        </p:panel>
+    </h:form>
+</h:body>
+</html>

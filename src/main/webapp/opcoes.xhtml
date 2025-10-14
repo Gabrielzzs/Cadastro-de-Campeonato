@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<h:outputStylesheet library="css" name="style.css" />
+    <title>Opções</title>
+</h:head>
+<h:body>
+    <h:form>
+        <p:panel header="Opções">
+            <p:linkButton value="Cadastrar Campeonato" outcome="cadastro_campeonato"/>
+            <p></p>
+            <p:linkButton value="Cadastrar Usuário" outcome="cadastroUsuarios"/>
+            <p></p>
+            <p:linkButton value="Listar Usuários" outcome="listaUsuario"/>
+            <p></p>
+            <p:linkButton value="Cadastro de Jogos" outcome="cadastro_jogo"/>
+            <p></p>
+            <p:linkButton value="Lista de jogos" outcome="listagem"/>
+            <p></p>
+            <p:linkButton value="Filtro de jogos" outcome="filtro"/>
+            <p></p>
+            <p:linkButton value="Login" outcome="login"/>
+        </p:panel>
+    </h:form>
+</h:body>
+</html>
+

@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<h:outputStylesheet library="css" name="style.css" />
+	<title>Cadastro de Jogo</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:panel header="Cadastro de Jogo">
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputLabel value="Data e Horário da Partida:" for="dataPartida" />
+            <p:calendar id="dataPartida" value="#{jogoBean.jogo.dataPartida}" 
+                        required="true" 
+                        requiredMessage="A data e o horário da partida são obrigatórios."
+                        pattern="dd/MM/yyyy HH:mm" 
+                        showTime="true" 
+                        timeOnly="false" />
+
+				<h:outputLabel value="Time 1:" for="time1" />
+				<p:selectOneMenu id="time1" value="#{jogoBean.jogo.time1}"
+					required="true" requiredMessage="O Time 1 é obrigatório.">
+					<f:selectItem itemLabel="Selecione" itemValue="" />
+					<f:selectItem itemLabel="Time A" itemValue="A" />
+					<f:selectItem itemLabel="Time B" itemValue="B" />
+					<f:selectItem itemLabel="Time C" itemValue="C" />
+				</p:selectOneMenu>
+
+				<h:outputLabel value="Time 2:" for="time2" />
+				<p:selectOneMenu id="time2" value="#{jogoBean.jogo.time2}"
+					required="true" requiredMessage="O Time 2 é obrigatório.">
+					<f:selectItem itemLabel="Selecione" itemValue="" />
+					<f:selectItem itemLabel="Time A" itemValue="A" />
+					<f:selectItem itemLabel="Time B" itemValue="B" />
+					<f:selectItem itemLabel="Time C" itemValue="C" />
+				</p:selectOneMenu>
+
+				<h:outputLabel value="Gols Time 1:" for="golsTime1" />
+				<p:inputText id="golsTime1" value="#{jogoBean.jogo.golsTime1}"
+					required="true"
+					requiredMessage="Os gols do Time 1 são obrigatórios." />
+
+				<h:outputLabel value="Gols Time 2:" for="golsTime2" />
+				<p:inputText id="golsTime2" value="#{jogoBean.jogo.golsTime2}"
+					required="true"
+					requiredMessage="Os gols do Time 2 são obrigatórios." />
+
+
+				<h:outputLabel value="Campeonato:" for="campeonato" />
+				<p:selectOneMenu id="campeonato" value="#{jogoBean.jogo.campeonato}"
+					converter="campeonatoConverter">
+					<f:selectItem itemLabel="Selecione" itemValue="" />
+					<f:selectItems value="#{jogoBean.listaCampeonatos}"
+						var="campeonato" itemValue="#{campeonato}"
+						itemLabel="#{campeonato.nome}" />
+				</p:selectOneMenu>
+
+			</h:panelGrid>
+
+			<p:commandButton value="Salvar" action="#{jogoBean.salvar}"
+				update="@form" />
+			<p></p>
+			<p:linkButton value="Listar Jogos" outcome="listagem.xhtml" />
+			<p></p>
+			<p:linkButton value="MENU" outcome="opcoes" />
+		</p:panel>
+
+		<p:messages id="messages" autoUpdate="true" showDetail="true" />
+	</h:form>
+</h:body>
+</html>
+

@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+p:panel {
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+p:commandButton, p:linkButton {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    padding: 8px 12px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+p:commandButton:hover, p:linkButton:hover {
+    background-color: #45a049;
+}
+
+p:dataTable {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+p:dataTable th, p:dataTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+p:dataTable th {
+    background-color: #4CAF50;
+    color: white;
+}
